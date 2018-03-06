@@ -22,19 +22,19 @@ The code has been tested in the following versions of library
 * number_of_epochs is the variable number of runs of the training required e.g. 10, 50, 100, etc.
 
 ## Training a model
-
+* Function lets you train a new model
 ```
 gpu0 python CSAE.py Train_model train_number threshold_val number_of_epochs
 ```
 
 ## Validate trained model
-
+* Function lets you validate an existing model, visulalizes the weights and biases and the error plots 
 ```
 gpu0 python CSAE.py Validate_model train_number threshold_val number_of_epochs
 ```
 
 ## Model inference
-
+* Function lets you Test on unseen samples related to model training.
 ```
 gpu0 python CSAE.py Test_model train_number threshold_val number_of_epochs
 ```
