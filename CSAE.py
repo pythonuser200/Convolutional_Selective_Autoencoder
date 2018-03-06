@@ -13,6 +13,7 @@ TESTING COMMAND: gpu0 python CSAE.py Test_model train_number threshold_val numbe
 * train_number is a unique identifier for saving a new training model e.g. 1, 2, 3,...etc. 
 * threshold_value is a value between 0 and 255 that helps in the postprocessing for objects and non-object level.
 * number_of_epochs is the variable number of runs of the training required e.g. 10, 50, 100, etc.
+* Note that the code uses tabs (instead of spaces) for indenting, so set your editor to tab indentation. 
 
 TO TEST ON NEW DATASETS IN A DIRECTORY, REPLACE THE TRAIN AND TEST PATH IN THE INITIALIZATION TO TEST ON NEW DATASETS
 """
@@ -23,7 +24,7 @@ TO TEST ON NEW DATASETS IN A DIRECTORY, REPLACE THE TRAIN AND TEST PATH IN THE I
 # <codecell>
 #from __future__ import division
 # add to kfkd.py
-import os,skimage,gzip,h5py,lasagne,csv,dill
+import os,skimage,gzip,h5py,lasagne,csv
 import cPickle as pickle
 from lasagne import layers
 from random import sample as samp
@@ -91,8 +92,9 @@ batch_size=128
 conv_filters = 128
 deconv_filters = 128
 filter_sizes = 3
-encode_size =40 #40  ()
+encode_size =40
 epochs = int(argv[4])
+model_name = '%s/pa_si%str%s_ae.pkl'%(result_folder, patch_size[0],tr_no) #For validation and testing using pretrained model, change this file name to the name of your model
 ##########################################################################
 ########################### settings for the User here ###################
 ##########################################################################
@@ -536,7 +538,7 @@ def Train_model(patch_size=patch_size):
 	X,Y,X_train,X_out,patch_size,sigma,mu = load_dataset(patch_size=patch_size)
 	ae = Train(U_train=X_train,v_train=X_out)
     
-	pickle.dump(ae, open('%s/pa_si%str%s_ae.pkl'%(result_folder, patch_size[0],tr_no),"wb"))
+	pickle.dump(ae, open(model_name,"wb"))
 
 	X_train_pred = ae.predict(X_train).reshape(-1, patch_size[0], patch_size[1]) * 127.5 + 127.5
 
@@ -552,8 +554,8 @@ def Validate_model(patch_size=patch_size):
 	###########################################################################################
 	################  Plot loss for two functions here ########################################
 	###########################################################################################
-
-	f = open('%s/pa_si%str%s_ae.pkl'%(result_folder, patch_size[0],tr_no),'rb')
+	
+	f = open(model_name,'rb')
 	ae = pickle.load(f)
 	f.close()
 
@@ -709,7 +711,7 @@ def Test_model():
 		        ae = ae
 		else:
 				#if known_model is None:	    
-				f = open('%s/pa_si%str%s_ae.pkl'%(result_folder, patch_size[0],tr_no),'rb')
+				f = open(model_name,'rb')
 				ae = pickle.load(f)
 				f.close()			
 				"""else:
