@@ -5,7 +5,7 @@ DATA ACCESS FORM:
 
 Please fill out this form that asks for your name, a valid email address and the name of the institution you are affiliated with, to gain access to the data and model weights:
 
-https://docs.google.com/forms/d/e/1FAIpQLSdnXTDNWLWLlJJoqPqTFxmUAiLYW18Gy_ldond_xxduJWpQAQ/viewform?c=0&w=1
+https://docs.google.com/forms/d/1Vnyk03rVDSPlP8lUAD9WVTedKikcS497Cr2qnHsmCz8/edit
 
 
 Thank you for your interest. The download link will be sent to your email once the form is completed. 
